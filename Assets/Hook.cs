@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour {
 
+    [SerializeField] GameObject hook = null;
+
 	// Use this for initialization
 	void Start () {
 		

@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour {
 	void Start () {
         spawner = GameObject.FindObjectOfType<Spawner>();
         NextColor();
-        print(Camera.main.aspect * 1080 * canvusScale);
         heathBar.rectTransform.position = new Vector2(-Camera.main.aspect * 5, -5);
 	}
 	
@@ -32,6 +31,13 @@ public class GameController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (width > 900)
+        {
+            width = 900;
+        } else if (width < 0)
+        {
+            Debug.Log("GG");
+        }
 		heathBar.rectTransform.sizeDelta = new Vector2(width -= 0.5f, 50);
     }
 }

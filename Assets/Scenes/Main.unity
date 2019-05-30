@@ -164,6 +164,7 @@ MonoBehaviour:
   - {r: 0.9166546, g: 0, b: 1, a: 1}
   - {r: 1, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.58360845, b: 0, a: 1}
+  fishInstances: []
 --- !u!4 &50656532
 Transform:
   m_ObjectHideFlags: 0
@@ -429,6 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42dbf0684b8f5b9479658d83e3992116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hook: {fileID: 1830001140345452, guid: 925529dde39b2c4448802ecfbcf9d762, type: 2}
 --- !u!4 &1197149028
 Transform:
   m_ObjectHideFlags: 0
@@ -527,7 +529,7 @@ RectTransform:
   m_GameObject: {fileID: 1474259393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.0070274067, y: 0.0070274067, z: 0.0070274067}
+  m_LocalScale: {x: 0.00926, y: 0.00926, z: 0.00926}
   m_Children:
   - {fileID: 111668259}
   - {fileID: 903032516}
@@ -538,7 +540,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2846, y: 1423}
+  m_SizeDelta: {x: 2160, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474259398
 MonoBehaviour:
@@ -665,6 +667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatColor: {fileID: 903032517}
   heathBar: {fileID: 1839443973}
+  width: 900
+  canvusScale: 0.00926
   colors:
   - Green
   - Red
@@ -751,6 +755,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.049804688, y: -0.00018310547}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 847.7, y: 67.400024}
   m_Pivot: {x: 0, y: 0}

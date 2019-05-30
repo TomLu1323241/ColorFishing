@@ -6,17 +6,30 @@ public class Fish : MonoBehaviour {
 
     Spawner spawner;
     GameController gameController;
+    [SerializeField] GameObject hook = null;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         spawner = GameObject.FindObjectOfType<Spawner>();
         gameController = GameObject.FindObjectOfType<GameController>();
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	void HookBegin()
+    {
+        hook = GameObject.Instantiate(hook);
+        float timeToFish = (6 - this.transform.position.y) / 10;
+        hook.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -10);
+        hook.transform.position = new Vector2(this.transform.position.x + this.GetComponent<Rigidbody2D>().velocity.x * timeToFish, 6);
+        StartCoroutine(HookBack(timeToFish));
+    }
+
+    IEnumerator HookBack(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        hook.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
+        this.GetComponent<CircleCollider2D>().enabled = false;
+    }
 
     private void OnMouseDown()
     {
@@ -24,7 +37,8 @@ public class Fish : MonoBehaviour {
         {
             gameController.width += 50;
             gameController.NextColor();
-            GameObject.Destroy(this.gameObject);
+            HookBegin();
+            //GameObject.Destroy(this.gameObject);
         } else
         {
             gameController.width -= 100;
