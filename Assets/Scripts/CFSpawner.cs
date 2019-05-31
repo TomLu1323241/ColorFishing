@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class CFSpawner : MonoBehaviour
 {
 
     [SerializeField] List<GameObject> fish = new List<GameObject>();
     [SerializeField] public float spawnInterval = 2;
     [SerializeField] public List<Color> colors = new List<Color>();
 
-    public List<GameObject> fishInstances = new List<GameObject>();
+    public List<GameObject> fishInstance = new List<GameObject>();
+
     public Coroutine spawningRoutine;
 
     float seperation;
@@ -19,8 +20,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         // Get 4 different lanes based off screen ratio
-        seperation = Camera.main.orthographicSize * 2 / 4;
-        seperationMid = Camera.main.orthographicSize * 2 / 8;
+        seperation = Camera.main.orthographicSize * 2 / 4;// Creates 4 lanes
+        seperationMid = Camera.main.orthographicSize * 2 / 8;// Allows for posisiton of the middle of a lane
 
         spawningRoutine = StartCoroutine(Spawn());
     }
@@ -45,13 +46,14 @@ public class Spawner : MonoBehaviour
         int color = (int)(Random.value * colors.Count);
         g.GetComponent<SpriteRenderer>().color = colors[color];
         g.transform.GetChild(0).GetComponent<SpriteRenderer>().color = colors[color];
-        fishInstances.Add(g);
+        g.GetComponent<SpriteRenderer>().sortingOrder = 10;
+        fishInstance.Add(g);
         GameObject.Destroy(g, 6f);
     }
 
     void SpawnSet()
     {
-        for (int i = (int)(Random.value + 0.5); i < 3; i++)
+        for (int i = (int)(Random.value + 0.5); i < 4; i++)// Allows the spawn on 3-4 fish per wave
         {
             SpawnOne((int)(Random.value * 3), fish);
         }
