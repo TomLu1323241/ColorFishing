@@ -26,8 +26,9 @@ public class CFFish : MonoBehaviour {
     IEnumerator HookBack(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        hook.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 20);
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 20);
+        hook.transform.position = this.transform.position;
+        hook.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 10);
         yield return new WaitForSeconds(3f);
         GameObject.Destroy(hook);
     }

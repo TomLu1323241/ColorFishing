@@ -55,6 +55,6 @@ public class CFGameController : MonoBehaviour {
             whatColor.text = "Good Game!";
             whatColor.color = new Color32(0, 0, 0, 255);
         }
-        heathBar.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount = healthPercent -= drain;// Drains hunger slowly
+        heathBar.GetComponent<Image>().fillAmount = healthPercent -= drain;// Drains hunger slowly
     }
 }
